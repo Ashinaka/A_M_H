@@ -1,42 +1,39 @@
 import random
-hand      = {0:"グー", 1:"チョキ", 2:"パー"} 
+hand      = {1:"グー", 2:"チョキ", 3:"パー"} 
 judge     = {0:"負け", 1:"あいこ", 2:"勝ち"} 
-direction = {0:"↑", 1:"→", 2:"↓", 3:"←"} 
+direction = {1:"↑", 2:"→", 3:"↓", 4:"←"} 
 
-# じゃんけんをする
-# 勝ち   2
-# あいこ 1
-# 負け   0
-def rock_paper_scissors(player_hand):
-    cp_hand = random.randint(0,2)
+
+# じゃんけん関数
+def r_p_s(player_hand):
+    cp_hand = random.randint(1,3)
     print("コンピュータの手 " + hand[cp_hand])
-    if player_hand == 0: # プレイヤーがグー出してたら
-        if cp_hand == 0: # コンピュータ グー 
+    if player_hand == 1: 
+        if cp_hand == 1: 
             return 1
-        if cp_hand == 1: # コンピュータ チョキ
+        if cp_hand == 2: 
             return 2
-        if cp_hand == 2: # コンピュータ パー
+        if cp_hand == 3: 
             return 0
-    elif player_hand == 1: # プレイヤーがチョキ出してたら
-        if cp_hand == 0: # コンピュータ グー 
+    elif player_hand == 2: 
+        if cp_hand == 1:  
             return 0
-        if cp_hand == 1: # コンピュータ チョキ
+        if cp_hand == 2: 
             return 1
-        if cp_hand == 2: # コンピュータ パー
+        if cp_hand == 3: 
             return 2
-    elif player_hand == 2: # プレイヤーがパー出してたら
-        if cp_hand == 0: # コンピュータ グー 
+    elif player_hand == 3: 
+        if cp_hand == 1:  
             return 2
-        if cp_hand == 1: # コンピュータ チョキ
+        if cp_hand == 2: 
             return 0
-        if cp_hand == 2: # コンピュータ パー
+        if cp_hand == 3: 
             return 1
 
-# あっちむいてほいをする
-# 同じ向き 1
-# 違う向き 0
-def look_that_way(player_choice):
-    cp_choice = random.randint(0,3)
+
+# あっちむいてほい関数
+def a_m_h(player_choice):
+    cp_choice = random.randint(1,4)
     print("コンピュータの選択 " + direction[cp_choice])
     if player_choice == cp_choice:  
         return 1
@@ -44,32 +41,30 @@ def look_that_way(player_choice):
         return 0
     return
 
-# 勝ち あなたの勝ちです と表示
-# あいこ もう一回じゃんけんする
-# 負け あなたの負けです と表示
+
 print("あっちむいてほいをしましょう！")
 while True:
-    player_hand = int(input("あなたの手を入力してください グー:0 チョキ:1 パー:2 \n"))
-    rock_paper_scissors_result = rock_paper_scissors(player_hand)
-    print() # 見やすくするために改行
-    if rock_paper_scissors_result == 2: # 勝ってたら
+    player_hand = int(input("あなたの手を入力してください グー:1 チョキ:2 パー:3 \n"))
+    r_p_s_result = r_p_s(player_hand)
+    print()
+    if r_p_s_result == 2:
         print("じゃんけんに勝ちました！")
-        player_choice = int(input("指をどっちに向けますか？ ↑:0 →:1 ↓:2 ←:3 \n"))
-        look_that_way_result = look_that_way(player_choice)
-        if look_that_way_result == 1: # あっちむいてほい勝った
+        player_choice = int(input("指をどっちに向けますか？ ↑:1 →:2 ↓:3 ←:4 \n"))
+        a_m_h_result = a_m_h(player_choice)
+        if a_m_h_result == 1:
             print("あなたの勝ちです！")
             break
         else: 
             print("ハズレです ><")
-    elif rock_paper_scissors_result == 1: # あいこ
+    elif r_p_s_result == 1: 
         print("あいこです！")
-    elif rock_paper_scissors_result == 0: # 負け
+    elif r_p_s_result == 0:
         print("じゃんけんに負けました ><")
-        player_choice = int(input("頭をどっちに向けますか？ ↑:0 →:1 ↓:2 ←:3 \n"))
-        look_that_way_result = look_that_way(player_choice)
-        if look_that_way_result == 1: # あっちむいてほい負け
+        player_choice = int(input("頭をどっちに向けますか？ ↑:1 →:2 ↓:3 ←:4 \n"))
+        a_m_h_result = a_m_h(player_choice)
+        if a_m_h_result == 1:
             print("あなたの負けです！")
             break
         else: 
             print("セーフ！ ")
-    print("") # 見やすくするために改行
+    print("")
