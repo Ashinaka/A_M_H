@@ -1,4 +1,5 @@
 import random
+import numpy as np
 hand      = {1:"グー", 2:"チョキ", 3:"パー"} 
 judge     = {0:"負け", 1:"あいこ", 2:"勝ち"} 
 direction = {1:"↑", 2:"→", 3:"↓", 4:"←"} 
