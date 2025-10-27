@@ -3,7 +3,7 @@ import numpy as np
 hand      = {1:"グー", 2:"チョキ", 3:"パー"} 
 judge     = {0:"負け", 1:"あいこ", 2:"勝ち"} 
 direction = {1:"↑", 2:"→", 3:"↓", 4:"←"} 
-
+round = 9
 
 # じゃんけん関数
 def r_p_s(player_hand):
@@ -44,14 +44,16 @@ def a_m_h(player_choice):
 
 
 print("あっち向いてホイ開始")
-while True:
-    player_hand = int(input("プレイヤーの手を入力 グー:1 チョキ:2 パー:3\n"))
+pl_hands =np.loadtxt('D:\VSCode\Github\A_M_H\handirection.txt', dtype='int64', skiprows=1, usecols=[0])
+pl_choices =np.loadtxt('D:\VSCode\Github\A_M_H\handirection.txt', dtype='int64', skiprows=1, usecols=[1])
+for i in range(round):
+    player_hand = pl_hands[i]
+    player_choice = pl_choices[i]
     while True:
         r_p_s_result = r_p_s(player_hand)
         print()
         if r_p_s_result == 2:
             print("じゃんけんに勝利")
-            player_choice = int(input("指の方向を入力 ↑:1 →:2 ↓:3 ←:4 \n"))
             a_m_h_result = a_m_h(player_choice)
             if a_m_h_result == 1:
                 print("プレイヤーの勝利")
@@ -63,7 +65,6 @@ while True:
             print("あいこ")
         elif r_p_s_result == 0:
             print("じゃんけんに敗北")
-            player_choice = int(input("頭の方向を入力 ↑:1 →:2 ↓:3 ←:4 \n"))
             a_m_h_result = a_m_h(player_choice)
             if a_m_h_result == 1:
                 print("プレイヤーの敗北")
