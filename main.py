@@ -44,8 +44,9 @@ def a_m_h(player_choice):
 
 
 print("あっち向いてホイ開始")
-pl_hands =np.loadtxt('D:\VSCode\Github\A_M_H\handirection.txt', dtype='int64', skiprows=1, usecols=[0])
-pl_choices =np.loadtxt('D:\VSCode\Github\A_M_H\handirection.txt', dtype='int64', skiprows=1, usecols=[1])
+f = open('AMH_result.txt', 'w')
+pl_hands =np.loadtxt(r'D:\VSCode\Github\A_M_H\handirection.txt', dtype='int64', skiprows=1, usecols=[0])
+pl_choices =np.loadtxt(r'D:\VSCode\Github\A_M_H\handirection.txt', dtype='int64', skiprows=1, usecols=[1])
 for i in range(round):
     player_hand = pl_hands[i]
     player_choice = pl_choices[i]
@@ -72,4 +73,5 @@ for i in range(round):
                 print("攻撃を凌いだ")
                 break
     print("")
+f.close()
 print("あっち向いてホイ終了")
