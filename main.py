@@ -44,7 +44,7 @@ def a_m_h(player_choice):
 
 
 print("あっち向いてホイ開始")
-f = open('AMH_result.txt', 'w')
+f = open('AMH_result.txt', 'w', encoding='UTF-8')
 pl_hands =np.loadtxt(r'D:\VSCode\Github\A_M_H\handirection.txt', dtype='int64', skiprows=1, usecols=[0])
 pl_choices =np.loadtxt(r'D:\VSCode\Github\A_M_H\handirection.txt', dtype='int64', skiprows=1, usecols=[1])
 for i in range(round):
@@ -53,24 +53,24 @@ for i in range(round):
     while True:
         r_p_s_result = r_p_s(player_hand)
         if r_p_s_result == 2:
-            print("アタックフェーズ")
+            f.write('アタックフェーズ\n')
             a_m_h_result = a_m_h(player_choice)
             if a_m_h_result == 1:
-                print("プレイヤーの勝利")
+                f.write('プレイヤーの勝利\n')
                 break
             else: 
-                print("倒しきれなかった")
+                f.write('倒しきれなかった\n')
                 break
         elif r_p_s_result == 1: 
-            print("あいこ")
+            f.write('あいこ\n')
         elif r_p_s_result == 0:
-            print("ガードフェーズ")
+            f.write('ガードフェーズ\n')
             a_m_h_result = a_m_h(player_choice)
             if a_m_h_result == 1:
-                print("プレイヤーの敗北")
+                f.write('プレイヤーの敗北\n')
                 break
-            else: 
-                print("攻撃を凌いだ")
+            else:
+                f.write('攻撃を凌いだ\n')
                 break
     print("")
 f.close()
