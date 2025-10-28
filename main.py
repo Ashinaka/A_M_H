@@ -1,12 +1,12 @@
 import random
 import numpy as np
 
-hand      = {1:"グー", 2:"チョキ", 3:"パー"} 
-judge     = {0:"負け", 1:"あいこ", 2:"勝ち"} 
+hand      = {1:"グー", 2:"チョキ", 3:"パー"}  
 direction = {1:"↑", 2:"→", 3:"↓", 4:"←"} 
 round = 9
 
 # じゃんけん関数
+# 0:負け, 1:あいこ, 2:勝ち
 def r_p_s(player_hand):
     cp_hand = random.randint(1,3)
     print("コンピュータ:" + hand[cp_hand], "VS プレイヤー:" + hand[player_hand], file=f)
