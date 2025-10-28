@@ -8,7 +8,7 @@ round = 9
 # じゃんけん関数
 def r_p_s(player_hand):
     cp_hand = random.randint(1,3)
-    print("コンピュータ:" + hand[cp_hand], "VS プレイヤー:" + hand[player_hand])
+    print("コンピュータ:" + hand[cp_hand], "VS プレイヤー:" + hand[player_hand], file=f)
     if player_hand == 1: 
         if cp_hand == 1: 
             return 1
@@ -35,7 +35,7 @@ def r_p_s(player_hand):
 # あっちむいてほい関数
 def a_m_h(player_choice):
     cp_choice = random.randint(1,4)
-    print("コンピュータ:" + direction[cp_choice], "VS プレイヤー:" + direction[player_choice])
+    print("コンピュータ:" + direction[cp_choice], "VS プレイヤー:" + direction[player_choice], file=f)
     if player_choice == cp_choice:  
         return 1
     else:
@@ -72,6 +72,6 @@ for i in range(round):
             else:
                 f.write('攻撃を凌いだ\n')
                 break
-    print("")
+    print("", file=f)
 f.close()
 print("あっち向いてホイ終了")
