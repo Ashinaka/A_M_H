@@ -53,24 +53,24 @@ for i in range(round):
     while True:
         r_p_s_result = r_p_s(player_hand)
         if r_p_s_result == 2:
-            f.write('アタックフェーズ\n')
+            print("アタックフェーズ", file=f)
             a_m_h_result = a_m_h(player_choice)
             if a_m_h_result == 1:
-                f.write('プレイヤーの勝利\n')
+                print("プレイヤーの勝利", file=f)
                 break
             else: 
-                f.write('倒しきれなかった\n')
+                print("倒しきれなかった", file=f)
                 break
         elif r_p_s_result == 1: 
-            f.write('あいこ\n')
+            print("あいこ", file=f)
         elif r_p_s_result == 0:
-            f.write('ガードフェーズ\n')
+            print("ガードフェーズ", file=f)
             a_m_h_result = a_m_h(player_choice)
             if a_m_h_result == 1:
-                f.write('プレイヤーの敗北\n')
+                print("プレイヤーの敗北", file=f)
                 break
             else:
-                f.write('攻撃を凌いだ\n')
+                print("攻撃を凌いだ", file=f)
                 break
     print("", file=f)
 f.close()
