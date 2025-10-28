@@ -8,7 +8,7 @@ round = 9
 # じゃんけん関数
 def r_p_s(player_hand):
     cp_hand = random.randint(1,3)
-    print("コンピュータの手 " + hand[cp_hand])
+    print("コンピュータ:" + hand[cp_hand], "VS プレイヤー:" + hand[player_hand])
     if player_hand == 1: 
         if cp_hand == 1: 
             return 1
@@ -35,7 +35,7 @@ def r_p_s(player_hand):
 # あっちむいてほい関数
 def a_m_h(player_choice):
     cp_choice = random.randint(1,4)
-    print("コンピュータの選択 " + direction[cp_choice])
+    print("コンピュータ:" + direction[cp_choice], "VS プレイヤー:" + direction[player_choice])
     if player_choice == cp_choice:  
         return 1
     else:
@@ -51,25 +51,24 @@ for i in range(round):
     player_choice = pl_choices[i]
     while True:
         r_p_s_result = r_p_s(player_hand)
-        print()
         if r_p_s_result == 2:
-            print("じゃんけんに勝利")
+            print("アタックフェーズ")
             a_m_h_result = a_m_h(player_choice)
             if a_m_h_result == 1:
                 print("プレイヤーの勝利")
                 break
             else: 
-                print("ハズレ")
+                print("倒しきれなかった")
                 break
         elif r_p_s_result == 1: 
             print("あいこ")
         elif r_p_s_result == 0:
-            print("じゃんけんに敗北")
+            print("ガードフェーズ")
             a_m_h_result = a_m_h(player_choice)
             if a_m_h_result == 1:
                 print("プレイヤーの敗北")
                 break
             else: 
-                print("セーフ")
+                print("攻撃を凌いだ")
                 break
     print("")
