@@ -72,3 +72,4 @@ for i in range(round):
                 print("攻撃を凌いだ")
                 break
     print("")
+print("あっち向いてホイ終了")
