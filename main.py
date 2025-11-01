@@ -47,16 +47,17 @@ def a_m_h(player_choice):
 
 print("あっち向いてホイ開始")
 f = open('AMH_result.txt', 'w', encoding='UTF-8')
-pl_hands =np.loadtxt(r'D:\VSCode\Github\A_M_H\handirection.txt', dtype='int64', skiprows=1, usecols=[0])
-pl_choices =np.loadtxt(r'D:\VSCode\Github\A_M_H\handirection.txt', dtype='int64', skiprows=1, usecols=[1])
+pl_hands = np.loadtxt(r'D:\VSCode\Github\A_M_H-data\handirections.txt', dtype='int64', skiprows=1, usecols=[0])
+pl_W_choices = np.loadtxt(r'D:\VSCode\Github\A_M_H-data\handirections.txt', dtype='int64', skiprows=1, usecols=[1])
+pl_L_choices = np.loadtxt(r'D:\VSCode\Github\A_M_H-data\handirections.txt', dtype='int64', skiprows=1, usecols=[2])
 for i in range(round+1):
     print("ラウンド", i+1, file=f)
     player_hand = pl_hands[i]
-    player_choice = pl_choices[i]
     while True:
         r_p_s_result = r_p_s(player_hand)
         if r_p_s_result == 2:
             print("アタックフェーズ", file=f)
+            player_choice = pl_W_choices[i]
             a_m_h_result = a_m_h(player_choice)
             if a_m_h_result == 1:
                 print("プレイヤーの勝利", file=f)
@@ -68,6 +69,7 @@ for i in range(round+1):
             print("あいこ", file=f)
         elif r_p_s_result == 0:
             print("ガードフェーズ", file=f)
+            player_choice = pl_L_choices[i]
             a_m_h_result = a_m_h(player_choice)
             if a_m_h_result == 1:
                 print("プレイヤーの敗北", file=f)
